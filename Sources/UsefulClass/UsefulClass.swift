@@ -1,11 +1,7 @@
-// The Swift Programming Language
-// https://docs.swift.org/swift-book
-
-/// A macro that produces both a value and a string containing the
-/// source code that generated the value. For example,
-///
-///     #stringify(x + y)
-///
-/// produces a tuple `(x + y, "x + y")`.
-@freestanding(expression)
-public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "UsefulClassMacros", type: "StringifyMacro")
+@attached(member, names: named(propertiesEqual), arbitrary)
+@attached(member, names: named(==), arbitrary)
+@attached(member, names: named(hash), arbitrary)
+@attached(member, names: named(CodingKeys), arbitrary)
+@attached(member, names: named(init), arbitrary)
+@attached(member, names: named(encode), arbitrary)
+public macro UsefulClass(codingMembers: [String], comparableMembers: [String], uselessInitializations: String) = #externalMacro(module: "UsefulClassMacros", type: "UsefulClassMacro")

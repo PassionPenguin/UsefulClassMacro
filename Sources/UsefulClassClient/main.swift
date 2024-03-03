@@ -1,8 +1,12 @@
+import Foundation
 import UsefulClass
 
-let a = 17
-let b = 25
-
-let (result, code) = #stringify(a + b)
-
-print("The value \(result) was produced by the code \"\(code)\"")
+@UsefulClass(codingMembers: ["age: Int"],
+             comparableMembers: ["age"],
+             uselessInitializations: "status = 0")
+class Recipe: Identifiable, Codable, Hashable, Equatable {
+    var age: Int = 0
+    
+    private var status: Int = 1
+    
+}
